@@ -9,11 +9,11 @@ cask "yaa" do
 
   app "yt-audio-air.app"
 
-  # 🚀 GATEKEEPER BYPASS: Strips out the macOS quarantine tag entirely upon installation
+  # 🚀 THE REAL GATEKEEPER BYPASS
+  # 1. We switch from 'appdir' to 'staged_path' to clean the files inside the Homebrew download cache.
+  # 2. We use standard Ruby 'system' syntax to prevent argument parsing bugs.
   postflight do
-    system_command '/usr/bin/xattr',
-                   args: ['-cr', "#{appdir}/yt-audio-air.app"],
-                   sudo: false
+    system "/usr/bin/xattr", "-cr", "#{staged_path}/yt-audio-air.app"
   end
 
   zap trash: [

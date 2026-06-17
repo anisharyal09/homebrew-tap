@@ -9,11 +9,8 @@ cask "yt-audio-air" do
 
   app "yt-audio-air.app"
 
-  # 🚀 GATEKEEPER BYPASS: Strips out the macOS quarantine tag entirely upon installation
   postflight do
-    system_command '/usr/bin/xattr',
-                   args: ['-cr', "#{appdir}/yt-audio-air.app"],
-                   sudo: false
+    system "/usr/bin/xattr", "-cr", "#{staged_path}/yt-audio-air.app"
   end
 
   zap trash: [
