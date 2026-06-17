@@ -2,12 +2,19 @@ cask "yt-audio-air" do
   version "1.2.0"
   sha256 "f434933b43946d8ab714f8b7e893eedf1dd3f52c3959d41324257feae88ff858"
 
-  url "https://github.com/anisharyal09/yt-audio-air/releases/download/v#{version}/yt-audio-air.zip"
+  url "https://github.com/anisharyal09/yt-audio-air/releases/download/v#{version}/ytaudio.zip"
   name "YT Audio Air"
-  desc "Native macOS menu bar app for resource-efficient YouTube audio streaming"
+  desc "Feather-light background YouTube audio player"
   homepage "https://github.com/anisharyal09/yt-audio-air"
 
   app "yt-audio-air.app"
+
+  # 🚀 GATEKEEPER BYPASS: Strips out the macOS quarantine tag entirely upon installation
+  postflight do
+    system_command '/usr/bin/xattr',
+                   args: ['-cr', "#{appdir}/yt-audio-air.app"],
+                   sudo: false
+  end
 
   zap trash: [
     "~/Library/Application Support/anish.creations.yt-audio-air",
