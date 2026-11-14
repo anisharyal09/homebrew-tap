@@ -8,12 +8,12 @@ cask "anice" do
   homepage "https://github.com/anisharyal09/aniCe"
 
   depends_on arch: :arm64
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "aniCe.app"
 
-  postflight do
-    system "/usr/bin/xattr", "-cr", "#{staged_path}/aniCe.app"
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/aniCe.app"]
   end
 
   zap trash: [
