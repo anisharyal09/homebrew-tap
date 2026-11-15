@@ -1,6 +1,6 @@
 cask "anice" do
-  version "0.9.0-beta.2"
-  sha256 "00040f2866c81c9232544f50ac34ab0e26c9927225e16f1aaca1f8a688938247"
+  version "0.9.0-beta.3"
+  sha256 "e34cca6a08b808f9ded348d98d2836189804fc83c048b5883fb88b5b65b70a6c"
 
   url "https://github.com/anisharyal09/aniCe/releases/download/v#{version}/aniCe-mac.zip"
   name "aniCe"
